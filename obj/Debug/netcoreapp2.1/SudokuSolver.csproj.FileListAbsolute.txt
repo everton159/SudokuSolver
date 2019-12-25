@@ -1,0 +1,10 @@
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\bin\Debug\netcoreapp2.1\SudokuSolver.deps.json
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\bin\Debug\netcoreapp2.1\SudokuSolver.runtimeconfig.json
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\bin\Debug\netcoreapp2.1\SudokuSolver.runtimeconfig.dev.json
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\bin\Debug\netcoreapp2.1\SudokuSolver.dll
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\bin\Debug\netcoreapp2.1\SudokuSolver.pdb
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\obj\Debug\netcoreapp2.1\SudokuSolver.csprojAssemblyReference.cache
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\obj\Debug\netcoreapp2.1\SudokuSolver.AssemblyInfoInputs.cache
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\obj\Debug\netcoreapp2.1\SudokuSolver.AssemblyInfo.cs
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\obj\Debug\netcoreapp2.1\SudokuSolver.dll
+C:\Users\everton\Documents\SudokuSolver\sudokusolver\obj\Debug\netcoreapp2.1\SudokuSolver.pdb

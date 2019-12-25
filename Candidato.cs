@@ -13,15 +13,28 @@ namespace SudokuSolver
                 this.coluna=coluna;
                 this.casa= casa;
                 this.andar= andar;
-
-
             }
 
      
    public int CompareTo(Candidato candidato)
         {
             //(Candidato)obj;
-           return this.numero - candidato.numero;
+            if(this.numero!=candidato.numero)
+                return this.numero - candidato.numero;
+
+            if(this.linha!=candidato.linha)
+                return this.linha - candidato.linha;
+  
+            if(this.coluna!=candidato.coluna)
+                return this.coluna - candidato.coluna;
+
+           if(this.casa!=candidato.casa)
+                return this.casa - candidato.casa;
+            
+           if(this.andar!=candidato.andar)
+                return this.andar - candidato.andar;
+
+            return 0;
         }
     
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {}
+    "C:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {}
   },
   "projects": {
-    "c:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
+    "C:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
+        "projectUniqueName": "C:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
         "projectName": "SudokuSolver",
-        "projectPath": "c:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
+        "projectPath": "C:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
         "packagesPath": "C:\\Users\\everton\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\obj\\",
+        "outputPath": "C:\\Users\\everton\\Documents\\SudokuSolver\\SudokuSolver\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
