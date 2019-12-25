@@ -6,185 +6,126 @@ namespace SudokuSolver
 {
     partial class Program
     {
-        static  int[,] matrix = new int[9,9]{
-                    {0,1,3,7,4,0,0,0,0,},
-                    {5,8,0,0,0,1,0,0,7,},
-                    {0,9,4,0,0,8,0,0,3,},
-                    {3,0,0,8,0,4,5,0,1,},
-                    {0,2,5,0,0,0,4,3,0,},
-                    {4,0,1,2,0,5,0,0,9,},
-                    {9,0,0,4,0,0,6,1,0,},
-                    {1,0,0,6,0,0,0,5,2,},
-                    {0,0,0,0,1,2,3,7,0,},
+           
+         static  int[,] matrix = new int[9,9]{
+                     {3,8,4,9,5,7,1,0,0,},
+                     {2,0,0,8,4,1,9,3,0},
+                     {0,7,0,2,6,3,8,0,4},
+                     {7,3,9,6,2,5,0,8,0},
+                     {0,0,0,4,3,8,0,0,0},
+                     {8,4,0,7,1,9,3,6,2},
+                     {4,0,3,5,8,2,0,7,0},
+                     {0,0,8,1,7,6,0,0,3},
+                     {0,0,7,3,9,4,5,0,8},
                 };
-            
-        // static  int[,] matrixbkp = new int[9,9]{
-        //             {3,8,4,9,5,7,1,0,0,},
-        //             {2,0,0,8,4,1,9,3,0},
-        //             {0,7,0,2,6,3,8,0,4},
-        //             {7,3,9,6,2,5,0,8,0},
-        //             {0,0,0,4,3,8,0,0,0},
-        //             {8,4,0,7,1,9,3,6,2},
-        //             {4,0,3,5,8,2,0,7,0},
-        //             {0,0,8,1,7,6,0,0,3},
-        //             {0,0,7,3,9,4,5,0,8},
-        //         };
             
         static void Main(string[] args)
         {
-            //Console.WriteLine("Candidatos Celula");
 
             Console.WriteLine("Inicio de tudo");
-            
-            for(int i =0; i < 9; i++){
-                for (int j = 0; j < 9; j++)
-                {
-                    Console.Write(matrix[i,j]+" ");
-                }
-                Console.WriteLine();
-            }
 
+            ImprimeMatrix();
 
+            List<Candidato> Candidatos = new List<Candidato>();
+            List<Candidato> paraAplicar = new List<Candidato>();
+            for (int iteracao = 0; iteracao < 20; iteracao++)
+            {
+                Console.WriteLine($"Iteração :{iteracao}");
 
-        List<Candidato> Candidatos =  new List<Candidato>();
-        List<Candidato> paraAplicar = new List<Candidato>();
-        for (int iteracao = 0;iteracao  < 20; iteracao++)
-        {
-            Console.WriteLine($"Iteração :{iteracao}");
-            
                 Candidatos.Clear();
                 paraAplicar.Clear();
 
-
-
-
-            for(int x =0; x<3; x++)
-            {
-                for(int y=0; y<3;y++)
+                for (int x = 0; x < 3; x++)
                 {
-                    for(int z=1; z<=9;z++){
-                        if(!existeNaCelula(x,y,z)){
-                           // Console.WriteLine($"Não existe {z} na celula {x} x {y}");
-                            for (int l = (x*3); l < (x*3)+3; l++)
+                    for (int y = 0; y < 3; y++)
+                    {
+                        for (int z = 1; z <= 9; z++)
+                        {
+                            if (!existeNaCelula(x, y, z))
                             {
-                              if(!existeNaLinha(l,z)){
-                             //     Console.WriteLine($"Não existe {z} na coluna {l}");
-                                    for (int c = y*3; c < (y*3)+3; c++)
+                                for (int l = (x * 3); l < (x * 3) + 3; l++)
+                                {
+                                    if (!existeNaLinha(l, z))
                                     {
-                                        if(!existeNaColuna(c,z))
-                                            if(matrix[l,c]==0)
-                                                Candidatos.Add( new Candidato(z,l,c,l/3,c/3));
+                                        for (int c = y * 3; c < (y * 3) + 3; c++)
+                                        {
+                                            if (!existeNaColuna(c, z))
+                                                if (matrix[l, c] == 0)
+                                                    Candidatos.Add(new Candidato(z, l, c, l / 3, c / 3));
 
+                                        }
                                     }
-
                                 }
-                 
                             }
                         }
                     }
-
                 }
-            }
-
-            
-           
-            
-        //     Console.WriteLine("Possiveis solucao");
-        //    // Candidatos.Sort();
-        //    Candidatos.ForEach(Console.WriteLine);
- 
 
 
 
-
-
-//Seleciona os candidatos possíveis
-            var CandidatosCasa =
-            from Candidato in Candidatos
-            group Candidato by (Candidato.numero,Candidato.andar, Candidato.casa) into CandidatoGroup
-            where CandidatoGroup.Count() == 1
-            select new
-            {
-              Numero = CandidatoGroup.Key,
-               Quantidade = CandidatoGroup.Count(),
-               
-           };
-
-            
-            // Console.WriteLine("Uma possibilidade");
-            // foreach(var x in CandidatosCasa){
-            //     Console.WriteLine(x);
-            // }
-
-
-
-
-
-      /*   var CandidatosCasa2 =
-            from Candidato in Candidatos
-            group Candidato by (Candidato.numero,Candidato.andar, Candidato.casa) into CandidatoGroup
-            where CandidatoGroup.Count() == 2
-            select new
-            {
-              Numero = CandidatoGroup.Key,
-               Quantidade = CandidatoGroup.Count(),
-               
-           };
-
-            Console.WriteLine("Duas possibilidades");
-            foreach(var x in CandidatosCasa2){
-                Console.WriteLine(x);
-            }
-            */
-
-
-           if(CandidatosCasa.Count()<1)
-            { 
-                Console.WriteLine("Concluido");
-                return;
-            }
-            
-
-
-
-
-//Converte pega os candidados novamente
-        
-            
-            foreach(var solucao in CandidatosCasa){
-              var resultado = solucao.Numero.ToTuple();
-              //Console.WriteLine()
-               paraAplicar.Add(Candidatos.Where(x => x.numero==resultado.Item1 && x.andar==resultado.Item2 && x.casa==resultado.Item3).First());
-            }
-
-
-            Console.WriteLine("Para Aplicar");
-            foreach(Candidato candidato in paraAplicar){
-                
-                Console.WriteLine(candidato);
-                matrix[candidato.linha, candidato.coluna]=candidato.numero;
-            }
-
-            
-        Console.WriteLine("Resultado final");
-            for(int i =0; i < 9; i++){
-                Console.Write("{");
-                for (int j = 0; j < 9; j++)
+                var CandidatosCasa =
+                from Candidato in Candidatos
+                group Candidato by (Candidato.numero, Candidato.andar, Candidato.casa) into CandidatoGroup
+                where CandidatoGroup.Count() == 1
+                select new
                 {
-                    Console.Write(matrix[i,j]+",");
-                }
-                Console.Write("},");
-                Console.WriteLine();
-            }
-            
+                    Numero = CandidatoGroup.Key,
+                    Quantidade = CandidatoGroup.Count(),
 
-    }
-            
+                };
+
+
+                if (CandidatosCasa.Count() < 1)
+                {
+                    
+                    Console.WriteLine("Concluido");
+                    ImprimeMatrix();
+                    return;
+                }
+
+
+
+
+
+                //Converte pega os candidados novamente
+
+
+                foreach (var solucao in CandidatosCasa)
+                {
+                    var resultado = solucao.Numero.ToTuple();
+                    //Console.WriteLine()
+                    paraAplicar.Add(Candidatos.Where(x => x.numero == resultado.Item1 && x.andar == resultado.Item2 && x.casa == resultado.Item3).First());
+                }
+
+
+                Console.WriteLine("Para Aplicar");
+                foreach (Candidato candidato in paraAplicar)
+                {
+
+                    Console.WriteLine(candidato);
+                    matrix[candidato.linha, candidato.coluna] = candidato.numero;
+                }
+
+
+                Console.WriteLine("Resultado final");
+                ImprimeMatrix();
+
+            }
+
 
         }
 
-
-
+        private static void ImprimeMatrix()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
 
         public static bool existeNaColuna(int coluna, int numero)
         {
